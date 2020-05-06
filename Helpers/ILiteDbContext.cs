@@ -2,6 +2,7 @@
 {
     public interface ILiteDbContext
     {
-        LiteDB.LiteDatabase Database { get; }
+        LiteDB.LiteDatabase Database { get; }     
+        string SqliteConnection { get; }
     }
 }

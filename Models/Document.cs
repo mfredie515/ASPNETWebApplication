@@ -7,6 +7,18 @@ namespace ASPNETWebApplication.Models
 {
     public class Document
     {
+        public Document()
+        {
+
+        }
+
+        public Document(int id, string filename, string data)
+        {
+            this.Id = id;
+            this.Filename = filename;
+            this.Data = System.Convert.FromBase64String(data);
+        }
+
         public int Id { get; set; }
         public string Filename { get; set; }
         public byte[] Data { get; set; }

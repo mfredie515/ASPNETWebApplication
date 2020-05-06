@@ -9,10 +9,13 @@ namespace ASPNETWebApplication.Helpers
     public class LiteDbContext : ILiteDbContext
     {
         private LiteDB.LiteDatabase _db { get; }
+        private string _con { get; }
 
         public LiteDbContext()
         {
             _db = new LiteDB.LiteDatabase("LiteDb.db");
+            _con = @"Data Source=.\\SQLite.db";
+
 
             //var colDocuments = _db.GetCollection<Models.Document>("Documents");
 
@@ -58,6 +61,14 @@ namespace ASPNETWebApplication.Helpers
             get
             {
                 return _db;
+            }
+        }
+
+        public string SqliteConnection
+        {
+            get
+            {
+                return _con;
             }
         }
     }
