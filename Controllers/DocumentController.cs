@@ -29,6 +29,7 @@ namespace ASPNETWebApplication.Controllers
         {
             Models.Document document = liteDbDocumentService.GetDocument(id);
 
+            return document;
             if (document != default)
                 return Ok(document);
             else
