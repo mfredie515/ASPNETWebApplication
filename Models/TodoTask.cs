@@ -9,7 +9,11 @@ namespace ASPNETWebApplication.Models
     {
         public TodoTask()
         {
-
+            this.Id = -1;
+            this.Title = "Blank";
+            this.Description = "Default Value";
+            this.Location = "Empty";
+            this.AddedDate = DateTime.Now;
         }
 
         public TodoTask(int id, string title, string description, string location, string addedDate)

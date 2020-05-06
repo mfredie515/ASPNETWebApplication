@@ -9,7 +9,9 @@ namespace ASPNETWebApplication.Models
     {
         public Document()
         {
-
+            this.Id = -1;
+            this.Filename = "Nothing";
+            this.Data = null;
         }
 
         public Document(int id, string filename, string data)
