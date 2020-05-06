@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Data.SQLite;
 
 namespace ASPNETWebApplication.Helpers
 {
@@ -25,12 +26,12 @@ namespace ASPNETWebApplication.Helpers
         {
             //return _db.GetCollection<Models.TodoTask>("TodoTasks").FindAll();
 
-            using (Microsoft.Data.Sqlite.SqliteConnection connection = new Microsoft.Data.Sqlite.SqliteConnection(_con))
+            using (SQLiteConnection connection = new SQLiteConnection(_con))
             {
                 connection.Open();
-                using (Microsoft.Data.Sqlite.SqliteCommand command = new Microsoft.Data.Sqlite.SqliteCommand("SELECT * FROM TodoTasks", connection))
+                using (SQLiteCommand command = new SQLiteCommand("SELECT * FROM TodoTasks", connection))
                 {
-                    using (Microsoft.Data.Sqlite.SqliteDataReader reader = command.ExecuteReader())
+                    using (SQLiteDataReader reader = command.ExecuteReader())
                     {
                         List<Models.TodoTask> todoTasks = new List<Models.TodoTask>();
                         if (reader.HasRows)
@@ -50,14 +51,14 @@ namespace ASPNETWebApplication.Helpers
         {
             //return _db.GetCollection<Models.TodoTask>("TodoTasks").Find(t => t.Id == id).FirstOrDefault();
 
-            using (Microsoft.Data.Sqlite.SqliteConnection connection = new Microsoft.Data.Sqlite.SqliteConnection(_con))
+            using (SQLiteConnection connection = new SQLiteConnection(_con))
             {
                 connection.Open();
-                using (Microsoft.Data.Sqlite.SqliteCommand command = new Microsoft.Data.Sqlite.SqliteCommand("SELECT * FROM TodoTasks WHERE [Id]=id", connection))
+                using (SQLiteCommand command = new SQLiteCommand("SELECT * FROM TodoTasks WHERE [Id]=id", connection))
                 {
                     command.Parameters.AddWithValue("id", id);
 
-                    using (Microsoft.Data.Sqlite.SqliteDataReader reader = command.ExecuteReader())
+                    using (SQLiteDataReader reader = command.ExecuteReader())
                     {
                         if (reader.HasRows)
                         {

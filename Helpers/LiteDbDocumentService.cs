@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Data.SQLite;
 
 namespace ASPNETWebApplication.Helpers
 {
@@ -20,12 +21,12 @@ namespace ASPNETWebApplication.Helpers
         {
             //return _db.GetCollection<Models.Document>("Documents").FindAll();
 
-            using (Microsoft.Data.Sqlite.SqliteConnection connection = new Microsoft.Data.Sqlite.SqliteConnection(_con))
+            using (SQLiteConnection connection = new SQLiteConnection(_con))
             {
                 connection.Open();
-                using (Microsoft.Data.Sqlite.SqliteCommand command = new Microsoft.Data.Sqlite.SqliteCommand("SELECT * FROM Documents", connection))
+                using (SQLiteCommand command = new SQLiteCommand("SELECT * FROM Documents", connection))
                 {
-                    using (Microsoft.Data.Sqlite.SqliteDataReader reader = command.ExecuteReader())
+                    using (SQLiteDataReader reader = command.ExecuteReader())
                     {
                         List<Models.Document> documents = new List<Models.Document>();
                         if (reader.HasRows)
@@ -45,14 +46,14 @@ namespace ASPNETWebApplication.Helpers
         {
             //return _db.GetCollection<Models.Document>("Documents").Find(d => d.Id == id).FirstOrDefault();
 
-            using (Microsoft.Data.Sqlite.SqliteConnection connection = new Microsoft.Data.Sqlite.SqliteConnection(_con))
+            using (SQLiteConnection connection = new SQLiteConnection(_con))
             {
                 connection.Open();
-                using (Microsoft.Data.Sqlite.SqliteCommand command = new Microsoft.Data.Sqlite.SqliteCommand("SELECT * FROM Documents WHERE [Id]=id", connection))
+                using (SQLiteCommand command = new SQLiteCommand("SELECT * FROM Documents WHERE [Id]=id", connection))
                 {
                     command.Parameters.AddWithValue("id", id);
 
-                    using (Microsoft.Data.Sqlite.SqliteDataReader reader = command.ExecuteReader())
+                    using (SQLiteDataReader reader = command.ExecuteReader())
                     {
                         if (reader.HasRows)
                         {
@@ -71,10 +72,10 @@ namespace ASPNETWebApplication.Helpers
         {
             //return _db.GetCollection<Models.Document>("Api").Insert(document);
 
-            using (Microsoft.Data.Sqlite.SqliteConnection connection = new Microsoft.Data.Sqlite.SqliteConnection(_con))
+            using (SQLiteConnection connection = new SQLiteConnection(_con))
             {
                 connection.Open();
-                using (Microsoft.Data.Sqlite.SqliteCommand command = new Microsoft.Data.Sqlite.SqliteCommand("INSERT INTO Documents ([Id], [Filename], [Data]) VALUES (@id, @filename, @data)", connection))
+                using (SQLiteCommand command = new SQLiteCommand("INSERT INTO Documents ([Id], [Filename], [Data]) VALUES (@id, @filename, @data)", connection))
                 {
                     command.Parameters.AddWithValue("@id", document.Id);
                     command.Parameters.AddWithValue("@filename", document.Filename);
@@ -89,10 +90,10 @@ namespace ASPNETWebApplication.Helpers
         {
             //return _db.GetCollection<Models.Document>("Api").Update(document);
 
-            using (Microsoft.Data.Sqlite.SqliteConnection connection = new Microsoft.Data.Sqlite.SqliteConnection(_con))
+            using (SQLiteConnection connection = new SQLiteConnection(_con))
             {
                 connection.Open();
-                using (Microsoft.Data.Sqlite.SqliteCommand command = new Microsoft.Data.Sqlite.SqliteCommand("UPDATE Documents SET [Filename]=@filename, [Data]=@data WHERE [Id]=@id", connection))
+                using (SQLiteCommand command = new SQLiteCommand("UPDATE Documents SET [Filename]=@filename, [Data]=@data WHERE [Id]=@id", connection))
                 {                    
                     command.Parameters.AddWithValue("@filename", document.Filename);
                     command.Parameters.AddWithValue("@data", document.Data);
@@ -107,10 +108,10 @@ namespace ASPNETWebApplication.Helpers
         {
             //return _db.GetCollection<Models.Document>("Api").Delete(id);
 
-            using (Microsoft.Data.Sqlite.SqliteConnection connection = new Microsoft.Data.Sqlite.SqliteConnection(_con))
+            using (SQLiteConnection connection = new SQLiteConnection(_con))
             {
                 connection.Open();
-                using (Microsoft.Data.Sqlite.SqliteCommand command = new Microsoft.Data.Sqlite.SqliteCommand("DELETE FROM Documents WHERE [Id]=id", connection))
+                using (SQLiteCommand command = new SQLiteCommand("DELETE FROM Documents WHERE [Id]=id", connection))
                 {
                     command.Parameters.AddWithValue("id", id);
 

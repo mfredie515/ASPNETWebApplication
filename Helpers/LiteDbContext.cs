@@ -14,8 +14,13 @@ namespace ASPNETWebApplication.Helpers
         public LiteDbContext()
         {
             _db = new LiteDB.LiteDatabase("LiteDb.db");
-            _con = @"Data Source=.\\SQLite.db";
+            _con = @"Data Source=SQLite.db";
 
+            //System.Data.SQLite.SQLiteConnection.CreateFile("SQLite.db");
+            //using (System.Data.SQLite.SQLiteConnection connection = new System.Data.SQLite.SQLiteConnection(_con))
+            //{
+
+            //}
 
             //var colDocuments = _db.GetCollection<Models.Document>("Documents");
 
