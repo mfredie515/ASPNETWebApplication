@@ -44,6 +44,7 @@ namespace ASPNETWebApplication.Helpers
 
         public Models.Document GetDocument(int id)
         {
+            return new Models.Document();
             return _db.GetCollection<Models.Document>("Documents").Find(d => d.Id == id).FirstOrDefault();
 
             //using (SQLiteConnection connection = new SQLiteConnection(_con))
