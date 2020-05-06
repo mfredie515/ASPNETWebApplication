@@ -11,8 +11,8 @@ namespace ASPNETWebApplication.Helpers
         private LiteDB.LiteDatabase _db { get; }
 
         public LiteDbContext()
-        {            
-            _db = new LiteDB.LiteDatabase(Environment.CurrentDirectory + @"LiteDb.db");
+        {
+            _db = new LiteDB.LiteDatabase("LiteDb.db");
 
             //var colDocuments = _db.GetCollection<Models.Document>("Documents");
 

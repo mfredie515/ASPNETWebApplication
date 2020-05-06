@@ -2,7 +2,12 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
+    <SignAssembly>false</SignAssembly>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="ASPNETWebApplicationLiteDb.db" />
+  </ItemGroup>
 
   <ItemGroup>
     <Folder Include="wwwroot\" />
