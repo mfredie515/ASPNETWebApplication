@@ -2,7 +2,7 @@
 
 namespace ASPNETWebApplication.Helpers
 {
-    public interface ILiteDbDocumentService
+    public interface IDocumentService
     {
         IEnumerable<Models.Document> GetAllDocuments();
         Models.Document GetDocument(int id);

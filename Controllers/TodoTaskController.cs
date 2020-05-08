@@ -11,9 +11,9 @@ namespace ASPNETWebApplication.Controllers
     [ApiController]
     public class TodoTaskController : ControllerBase
     {
-        private readonly Helpers.ILiteDbTodoTaskService liteDbTodoTaskService;
+        private readonly Helpers.ITodoTaskService liteDbTodoTaskService;
 
-        public TodoTaskController(Helpers.ILiteDbTodoTaskService liteDbTodoTaskService)
+        public TodoTaskController(Helpers.ITodoTaskService liteDbTodoTaskService)
         {
             this.liteDbTodoTaskService = liteDbTodoTaskService;
         }

@@ -11,9 +11,9 @@ namespace ASPNETWebApplication.Controllers
     [ApiController]
     public class DocumentController : ControllerBase
     {
-        private readonly Helpers.ILiteDbDocumentService liteDbDocumentService;
+        private readonly Helpers.IDocumentService liteDbDocumentService;
 
-        public DocumentController(Helpers.ILiteDbDocumentService liteDbDocumentService)
+        public DocumentController(Helpers.IDocumentService liteDbDocumentService)
         {
             this.liteDbDocumentService = liteDbDocumentService;
         }
@@ -29,7 +29,6 @@ namespace ASPNETWebApplication.Controllers
         {
             Models.Document document = liteDbDocumentService.GetDocument(id);
 
-            return document;
             if (document != default)
                 return Ok(document);
             else

@@ -2,7 +2,7 @@
 
 namespace ASPNETWebApplication.Helpers
 {
-    public interface ILiteDbTodoTaskService
+    public interface ITodoTaskService
     {
         IEnumerable<Models.TodoTask> GetAllTodoTasks();
         Models.TodoTask GetTodoTask(int id);
