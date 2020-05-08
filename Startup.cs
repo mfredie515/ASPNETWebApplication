@@ -26,9 +26,9 @@ namespace ASPNETWebApplication
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-            services.AddSingleton<Helpers.ILiteDbContext, Helpers.LiteDbContext>();
-            services.AddTransient<Helpers.ILiteDbDocumentService, Helpers.LiteDbDocumentService>();
-            services.AddTransient<Helpers.ILiteDbTodoTaskService, Helpers.LiteDbTodoTaskService>();
+            services.AddSingleton<Helpers.IDbContext, Helpers.DbContext>();
+            services.AddTransient<Helpers.IDocumentService, Helpers.DocumentService>();
+            services.AddTransient<Helpers.ITodoTaskService, Helpers.TodoTaskService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
