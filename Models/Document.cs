@@ -14,11 +14,11 @@ namespace ASPNETWebApplication.Models
             this.Data = null;
         }
 
-        public Document(int id, string filename, string data)
+        public Document(int id, string filename, byte[] data)
         {
             this.Id = id;
             this.Filename = filename;
-            this.Data = System.Convert.FromBase64String(data);
+            this.Data = data;
         }
 
         public int Id { get; set; }
